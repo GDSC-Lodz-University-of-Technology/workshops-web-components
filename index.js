@@ -2,7 +2,7 @@ import { BaseInput } from "./BaseInput.js";
 
 const template = document.createElement('template');
 template.innerHTML = `
-<${BaseInput.TAG}></${BaseInput.TAG}>
+<${BaseInput.TAG} kk-placeholder="i love you" kk-value="test" kk-type="text" kk-label="Do you love me?" ></${BaseInput.TAG}>
 `;
 export class App extends HTMLElement {
 
