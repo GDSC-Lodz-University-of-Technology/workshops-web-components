@@ -20,3 +20,7 @@ body {
     box-sizing: border-box;
     margin: 0;
 }
+
+.blue-background {
+    background-color: blue;
+}
