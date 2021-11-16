@@ -1,25 +1,28 @@
 const template = document.createElement('template');
 template.innerHTML = `
 <div class="wrapper blue-background">
-  <label for="base-input"></label>
-  <input type="text" name="base-input" placeholder="Type to write ...">
+  <label for="new-event"></label>
+  <input type="text" name="new-event" placeholder="Type to write ...">
+  <button>Add</button>
 </div>
 `;
 
-export class BaseInput extends HTMLElement {
+export class NewEventInput extends HTMLElement {
   
-  static TAG = 'kk-base-input';
+  static TAG = 'kk-new-event-input';
   static observedAttributes = ['kk-placeholder', 'kk-value', 'kk-type', 'kk-label'];
 
   _label;
   _input;
+  _button;
 
   constructor() {
     super();
     this.attachShadow({mode: 'open'});
     this.shadowRoot.append(template.content.cloneNode(true));
     this.getElementReferences();
-    console.log(`${BaseInput.name} has been created`);
+    this.initializeListeners();
+    console.log(`${NewEventInput.name} has been created`);
   }
 
   get label() {
@@ -57,14 +60,28 @@ export class BaseInput extends HTMLElement {
   getElementReferences() {
     this._label = this.shadowRoot.querySelector('label');
     this._input = this.shadowRoot.querySelector('input');
+    this._button = this.shadowRoot.querySelector('button');
+  }
+
+  initializeListeners() {
+    this._button.addEventListener('click', () => {
+      this._button.dispatchEvent(new CustomEvent('add-event', 
+      {
+        detail: {
+          eventValue: this.value
+        },
+        bubbles: true, 
+        composed: true
+      }));
+    });
   }
 
   connectedCallback() {
-    console.log(`${BaseInput.name} has been mounted in DOM`);
+    console.log(`${NewEventInput.name} has been mounted in DOM`);
   }
 
   disconnectedCallback() {
-    console.log(`${BaseInput.name} has been un-mounted from DOM`);
+    console.log(`${NewEventInput.name} has been un-mounted from DOM`);
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -85,10 +102,10 @@ export class BaseInput extends HTMLElement {
         this.label = newValue;
             break;      
       default:
-        throw new Error(`Attribute ${name} doesn't exists in ${BaseInput.name} attributes`);
+        throw new Error(`Attribute ${name} doesn't exists in ${NewEventInput.name} attributes`);
     }
   }
 
 }
 
-customElements.define(BaseInput.TAG, BaseInput);
+customElements.define(NewEventInput.TAG, NewEventInput);
