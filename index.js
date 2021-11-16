@@ -10,7 +10,8 @@ export class App extends HTMLElement {
 
   constructor() {
     super();
-    this.append(template.content.cloneNode(true));
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.append(template.content.cloneNode(true));
   }
 
 }

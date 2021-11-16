@@ -16,7 +16,8 @@ export class BaseInput extends HTMLElement {
 
   constructor() {
     super();
-    this.append(template.content.cloneNode(true));
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.append(template.content.cloneNode(true));
     this.getElementReferences();
     console.log(`${BaseInput.name} has been created`);
   }
@@ -54,8 +55,8 @@ export class BaseInput extends HTMLElement {
   }
 
   getElementReferences() {
-    this._label = this.querySelector('label');
-    this._input = this.querySelector('input');
+    this._label = this.shadowRoot.querySelector('label');
+    this._input = this.shadowRoot.querySelector('input');
   }
 
   connectedCallback() {
