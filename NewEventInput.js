@@ -65,6 +65,9 @@ export class NewEventInput extends HTMLElement {
 
   initializeListeners() {
     this._button.addEventListener('click', () => {
+      if (this.value.length === 0) {
+        return void 0;
+      }
       this._button.dispatchEvent(new CustomEvent('add-event', 
       {
         detail: {
@@ -73,6 +76,7 @@ export class NewEventInput extends HTMLElement {
         bubbles: true, 
         composed: true
       }));
+      this.value = '';
     });
   }
 
