@@ -3,8 +3,24 @@ import {EventsList} from "./EventsList.js";
 
 const template = document.createElement('template');
 template.innerHTML = `
-<${NewEventInput.TAG} kk-placeholder="What event you would like to add?" kk-label="Add new event" ></${NewEventInput.TAG}>
-<${EventsList.TAG}></${EventsList.TAG}>
+<link rel="stylesheet" type="text/css" media="screen" href="./shared-styles.css" />
+<style>
+:host {
+  height: 100%;
+}
+#container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>
+<main id="container">
+  <${NewEventInput.TAG} kk-placeholder="Event value ..." kk-label="Add new event:" ></${NewEventInput.TAG}>
+  <${EventsList.TAG}></${EventsList.TAG}>
+</main>
 `;
 
 export class App extends HTMLElement {

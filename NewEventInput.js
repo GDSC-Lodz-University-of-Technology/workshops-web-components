@@ -1,6 +1,28 @@
 const template = document.createElement('template');
 template.innerHTML = `
-<div class="wrapper blue-background">
+<link rel="stylesheet" type="text/css" media="screen" href="./shared-styles.css" />
+<style>
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  label {
+    font-size: 1.2rem;
+    padding: 0.25rem;
+  }
+  input {
+    margin: 0 1rem;
+    padding: 0.25rem 0.5rem;
+  }
+  button {
+    background-color: var(--accent-color);
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+  }
+</style>
+<div class="wrapper">
   <label for="new-event"></label>
   <input type="text" name="new-event" placeholder="Type to write ...">
   <button>Add</button>

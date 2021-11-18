@@ -1,5 +1,19 @@
 const template = document.createElement('template');
 template.innerHTML = `
+<link rel="stylesheet" type="text/css" media="screen" href="./shared-styles.css" />
+<style>
+  h2 {
+  text-align: center;
+  }
+  .events-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+</style>
 <h2>Events list:</h2>
 <ul class="events-list"></ul>
 `;

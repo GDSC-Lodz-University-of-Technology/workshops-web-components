@@ -1,3 +1,7 @@
+:root {
+    --accent-color: green;
+}
+
 html {
     height: 100%;
     width: 100%;
@@ -19,8 +23,4 @@ body {
 ::before {
     box-sizing: border-box;
     margin: 0;
-}
-
-.blue-background {
-    background-color: blue;
 }
